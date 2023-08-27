@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+$buttonColor: rgba(89, 62, 141, 1.00);
+$disabledButtonColor: #cecece;
+$headerColor: rgba(240, 240, 240, 1.00);
+$footerColor: rgba(240, 240, 240, 1.00);
+$boldTextColor: rgba(71, 71, 71, 1.00);
+$usualTextColor: rgba(128, 128, 128, 1.00);
+$inputColor: #f3f1f1;
+$inputBorderColor: #cecece;
+$maxWidthForContent: 1000px;
+
+%tplHeaderAndFooter {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  background-color: $headerColor;
+  height: 30px;
+}
+
+%tplButton {
+  height: 25px;
+  background-color: $buttonColor;
+  color: white;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 5px 15px 5px 15px;
+  border: 1px solid #cecece;
+
+  &:disabled {
+    color: $boldTextColor;
+    background-color: $disabledButtonColor; 
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  @extend %tplHeaderAndFooter;
+
+  .logo {
+    margin-left: calc((100vw - $maxWidthForContent) / 2 );
+    font-size: small;
+    font-weight: 500;
+    color: $usualTextColor;
+
+    @media screen and (max-width: 1280px) and (min-width: 640px){
+      margin-left: 10vw;
+    }
+    @media screen and (max-width: 639px) {
+      margin: 0;
+    }
+  }
+
+  @media screen and (max-width: 639px) {
+    justify-content: center;
+  }
+}
+
+main {
+  width: 100vw;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.searcher {
+  max-width: $maxWidthForContent;
+  width: 80vw;
+  margin-top: 10px;
+
+  form {
+    max-width: $maxWidthForContent;
+    display: flex;
+    justify-items: center;
+  
+    span {
+      font-size: smaller;
+      font-weight: 500;
+    }
+  
+    .searcher_explanation_filter {
+      text-align: left;
+      margin-right: 10px;
+      input {
+        box-sizing: border-box;
+        border-radius: 5px;
+        height: 25px;
+        width: 250px;
+      }
+    }
+  
+    .searcher_explanation_amount {
+      text-align: center;
+      input {
+        box-sizing: border-box;
+        border-radius: 5px;
+        height: 25px;
+        width: 45px;
+      }
+    }
+    
+    .searcher_button {
+      margin-top: auto;
+      margin-left: auto;
+  
+      input {
+        @extend %tplButton;
+      }
+    }
+    
+  }
+
+  @media screen and (max-width: 480px) {
+    background-color: $inputBorderColor;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px solid;
+    border-radius: 10px;
+    form {
+      flex-wrap: wrap;
+      .searcher_explanation_filter {
+        margin: 0;
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+      .searcher_button {
+        margin-left: auto;
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 95vw;
+  }
+}
+
+@media screen and (min-width: 761px) {
+  .product_table {
+    display: block;
+    overflow-y: auto;
+  }
+}
+
+.product_table {
+  max-width: $maxWidthForContent;
+  margin-top: 15px;
+  width: 80vw;
+  border-collapse: collapse;
+  max-height: calc(100vh - 250px);
+  
+  thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    
+    tr {
+      border-bottom: 1px solid black;
+      font-size: smaller;
+
+      @media screen and (max-width: 760px) {
+        font-size: 12px;
+        font-weight: 700;
+        color: $boldTextColor;
+      }
+  
+      th {
+        font-weight: 500;
+        color: $boldTextColor;
+        text-align: left;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      font-size: smaller;
+      
+      td {
+        font-weight: 500;
+        color: $usualTextColor;
+        text-align: left;
+        padding-bottom: 10px;
+        padding-right: 10px;
+      }
+
+      @media screen and (max-width: 760px) {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0px 10px 0px;
+        border-bottom: 1px solid $usualTextColor;
+        
+        td:first-child {
+          font-size: 14px;
+        }
+
+        td {          
+          padding: 0;
+          b {
+            color:$boldTextColor;
+          }
+        }
+        
+      }
+    }
+  }
+  @media screen and (max-width: 760px) {
+    tbody {
+      max-height: calc(100vh - 270px);
+      display: block;
+      overflow-y: auto;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    width: 95vw;
+    thead {
+      width: 100%;
+      display: table;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+} 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
+.pagination {
+  max-width: $maxWidthForContent;
+  display: flex;
+  width: 80vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+.pagination_button_prev_page {
+  @extend %tplButton;
+  margin-left: auto;
+}
+
+.pagination_button_next_page {
+  @extend %tplButton;
+  }
+
+  .pagination_navigation {
+    font-size: 12px;
+    padding: 5px 0px 5px 0px;
+    font-weight: 500;
+    color: $usualTextColor;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    background-color: $inputBorderColor;
+    flex-wrap: wrap;
+    margin-top: auto;
+    margin-bottom: 0;
+    
+    .pagination_navigation {
+      width: 100%
+    }
+    .pagination_button_prev_page {
+      margin: 0px;
+    }
+    .pagination_button_next_page {
+      margin-left: auto;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    box-sizing: border-box;
+    width: 100vw;
+    padding: 0px 10px 10px 10px;
+  }
+}
+
+.footer {
+  @extend %tplHeaderAndFooter;
+  justify-content: end;
+
+
+  .tagline {
+    margin-right: calc((100vw - $maxWidthForContent) / 2 );
+    font-size: small;
+    font-weight: 500;
+    color: $usualTextColor;
+    @media screen and (max-width: 1280px) and (min-width: 640px) {
+      margin-right: 10vw;
+    }
+    @media screen and (max-width: 639px) {
+      margin: 0;
+    }
+  }
+
+  @media screen and (max-width: 639px) {
+    justify-content: center;
+  }
+}
+
+  
