@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
 import { getProducts } from './services/product.service';
-import ProductTable from './ProductTable/ProductTable';
+import ProductTable from './components/ProductTable/ProductTable';
 import Header from './components/Header/Header';
 import './app.scss'
 import Footer from './components/Footer/Footer';
 import Searcher from './components/Searcher/Searcher';
-import Loader from './ProductTable/Loader/Loader';
-import MemoPagination from './ProductTable/Pagination/MemoPagination';
+import Loader from './components/ProductTable/Loader/Loader';
+import MemoPagination from './components/ProductTable/Pagination/MemoPagination';
 
 function App() {
   const [products, setProducts] = useState([]);
