@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import ProductTableHeader from "./TableHeader/TableHeader";
 import ProductTableBody from "./TableBody/TableBody";
-import { IProduct } from "../components/interfaces/product.interface";
+import { IProduct } from "../interfaces/product.interface";
 
 type IProductTable = {
   products: Array<IProduct>,

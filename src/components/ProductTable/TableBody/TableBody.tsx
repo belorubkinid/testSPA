@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IProduct } from "../../components/interfaces/product.interface";
+import { IProduct } from "../../interfaces/product.interface";
 
 type ProductTableType = {
   products: Array<IProduct>,
